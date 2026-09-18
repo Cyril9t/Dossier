@@ -17,53 +17,57 @@ const logs = [
     {
         code: "<repeat />"
     },
-
 ]
+
 function HeroSection() {
-
     return (
-        <div>
-            <div className="flex gap-2">
-                <div>
-                    <h1 className="text-foreground/65 text-2xl" >Hi, I'm Cyril </h1>
-                </div>
-
-                <div className="place-content-center mt-3">
-
-                    <p className="place-content-center w-7 h-0.5  rounded-2xl bg-primary"></p>
-                </div>
+        <div className="w-full">
+            {/* Greeting Header */}
+            <div className="flex items-center gap-3 mb-8">
+                <h1 className="text-foreground/65 text-2xl font-medium">Hi, I'm Cyril</h1>
+                <span className="w-7 h-0.5 rounded-2xl bg-primary inline-block"></span>
             </div>
-            <br />
-            <div className="flex gap-0 md:gap-20 flex-col md:flex-row">
-                <div className="flex flex-col gap-5 w-full md:w-[50%] ">
-                    <p className="text-5xl md:text-7xl text-primary font-bold">
-                        <span className="text-foreground">Building</span> Scalable systems <span className="text-foreground">&</span> fluid interfaces.
+
+            {/* Main Content Layout */}
+            <div className="flex gap-12 md:gap-20 flex-col md:flex-row items-start">
+
+                {/* Left Column: Text & Actions */}
+                <div className="flex flex-col gap-6 w-full md:w-[55%]">
+                    <p className="text-4xl sm:text-5xl md:text-7xl text-primary font-bold leading-tight">
+                        <span className="text-foreground">Building</span> scalable systems <span className="text-foreground">&</span> fluid interfaces.
                     </p>
-                    <div>
-                        <p className="text-foreground/65">I'm a software & developer who <span className="text-foreground">loves turning</span> ideas into real, usable products. i build <span className="text-foreground">modern</span>  web applications that are fast secure and designed for people.</p>
+
+                    <div className="max-w-xl">
+                        <p className="text-foreground/65 text-base sm:text-lg leading-relaxed">
+                            I'm a software developer who <span className="text-foreground font-medium">loves turning</span> ideas into real, usable products. I build <span className="text-foreground font-medium">modern</span> web applications that are fast, secure, and designed for people.
+                        </p>
                     </div>
-                    <div className="flex gap-5 w-[40%]">
-                        <Button className="bg-foreground rounded-4xl p-5 w-ful grow">Explore Work <ArrowRight /> </Button>
-                        <Button variant={"outline"} className="rounded-4xl p-5"> view Github profile
-                            <SiGithub />
+
+                    <div className="flex flex-col sm:flex-row gap-4 w-full pt-2">
+                        <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-6 py-6 flex items-center justify-center gap-2 font-medium">
+                            Explore Work <ArrowRight className="w-4 h-4" />
+                        </Button>
+                        <Button variant="outline" className="rounded-full px-6 py-6 flex items-center justify-center gap-2 font-medium">
+                            View GitHub Profile
+                            <SiGithub className="w-4 h-4" />
                         </Button>
                     </div>
                 </div>
 
-                <div className="relative w-full md:w-[50%]">
-                    <div className="w-full h-55 hidden md:block">
+                {/* Right Column: Canvas & Terminal Visuals */}
+                <div className="relative w-full md:w-[45%] mt-6 md:mt-0">
+                    <div className="w-full h-56 hidden md:block">
                         <InteractiveHeroCanvas lineWidth={1} />
                     </div>
-                    <div className="flex flex-col-reverse md:flex-row gap-1 md:gap-10 absolute -top-15 w-full">
-                        <div className="w-full rotate-0 md:rotate-10 mt-2 md:mt-15 ">
-                            <div className="">
-                                <LiveLogTerminal />
-                            </div>
+
+                    <div className="flex flex-col-reverse md:flex-row gap-4 md:gap-8 absolute top-0 md:-top-16 w-full">
+                        <div className="w-full rotate-0 md:rotate-6 mt-2 md:mt-12 transition-transform">
+                            <LiveLogTerminal />
                         </div>
-                        <div className="w-full md:w-[30%] mt-10 md:mt-15 gap-5 flex flex-row md:flex-col">
+                        <div className="w-full md:w-[35%] mt-4 md:mt-12 gap-3 flex flex-row md:flex-col justify-start">
                             {logs.map((c) => {
                                 return (
-                                    <div key={c.code} className="tracking-widest text-primary">
+                                    <div key={c.code} className="tracking-widest text-primary font-mono text-sm">
                                         <p>{c.code}</p>
                                     </div>
                                 )
@@ -71,6 +75,7 @@ function HeroSection() {
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     );

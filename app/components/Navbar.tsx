@@ -1,35 +1,36 @@
-
 import { Badge } from "@/components/ui/badge";
 import FlipCube from "@/components/originkit/ui/flip-cube";
+
 function Navbar() {
     return (
-        <div className="h-15 w-full bg-secondary flex text-foreground/65">
-            <div className="grow place-content-center">
-                <Badge variant={"outline"} className="p-4 tracking-wider">
-                    <span className="rounded-full h-3 w-3 bg-primary"></span> v2.4.0 // <span className="text-chart-2 font-semibold">CONNECTED</span>
+        <nav className="h-16 w-full bg-secondary px-6 flex items-center justify-between text-foreground/65 border-b border-border/40">
+            {/* Left: Version & Connection Status */}
+            <div className="flex items-center">
+                <Badge variant="outline" className="p-4 tracking-wider flex items-center gap-2.5 font-normal">
+                    <span className="rounded-full h-2 w-2 bg-primary animate-pulse inline-block"></span>
+                    <span className="font-mono text-xs">v2.4.0</span>
+                    <span className="text-foreground/40">//</span>
+                    <span className="text-chart-2 font-semibold tracking-wide text-xs">CONNECTED</span>
                 </Badge>
             </div>
 
-            <div className="place-content-center mr-6 tracking-widest">
-                <div className="flex gap-1">
-                    <div className="h-1 w-12 relative">
-                        <div className="">
-                            <FlipCube />
-                        </div>
+            {/* Right: Cube Animation & Local Time */}
+            <div className="flex items-center gap-3 tracking-widest text-xs sm:text-sm">
+                <div className="flex items-center gap-2">
+                    <div className="w-6 h-6 relative flex items-center justify-center">
+                        <FlipCube />
                     </div>
-                    <div>Remote //
-                        <span>
-                            {" "} {" "}
-                            {new Date().toLocaleTimeString("en-US", {
-                                hour: "2-digit",
-                                minute: "numeric",
-                            })}
-                        </span>
-                    </div>
+                    <span className="text-foreground/80 font-medium">Remote</span>
+                    <span className="text-foreground/40">//</span>
+                    <span className="font-mono text-primary font-medium">
+                        {new Date().toLocaleTimeString("en-US", {
+                            hour: "2-digit",
+                            minute: "numeric",
+                        })}
+                    </span>
                 </div>
             </div>
-        </div>
-
+        </nav>
     );
 }
 
