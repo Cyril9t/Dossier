@@ -15,6 +15,7 @@ type Props = {
     speed?: number;
     style?: React.CSSProperties;
     children: React.ReactNode
+
 };
 
 const DEFAULTS = {
@@ -25,6 +26,7 @@ const DEFAULTS = {
     glow: 3,
     movement: "continuous" as const,
     speed: 16,
+
 };
 
 const EDGE_COPIES = 2;
@@ -296,6 +298,7 @@ export default function NeonBorder(props: Props) {
                 padding: r,
                 borderRadius: radius > 0 ? radius + r : 0,
                 background: "var(--arc)",
+
                 ...BAND_MASK,
             }}
         />
