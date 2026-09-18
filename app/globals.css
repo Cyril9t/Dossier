@@ -102,3 +102,25 @@
     @apply font-sans;
   }
 }
+
+@keyframes spinSlow {
+  from {
+    transform: rotateX(20deg) rotateY(0deg);
+  }
+
+  to {
+    transform: rotateX(20deg) rotateY(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 12s linear infinite;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
