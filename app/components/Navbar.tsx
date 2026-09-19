@@ -4,7 +4,7 @@ import FlipCube from "@/components/originkit/ui/flip-cube";
 function Navbar() {
     return (
         <nav className="h-16 w-full bg-secondary px-6 flex items-center justify-between text-foreground/65 border-b border-border/40">
-            {/* Left: Version & Connection Status */}
+
             <div className="flex items-center">
                 <Badge variant="outline" className="p-4 tracking-wider flex items-center gap-2.5 font-normal">
                     <span className="rounded-full h-2 w-2 bg-primary animate-pulse inline-block"></span>
@@ -14,7 +14,7 @@ function Navbar() {
                 </Badge>
             </div>
 
-            {/* Right: Cube Animation & Local Time */}
+
             <div className="flex items-center gap-3 tracking-widest text-xs sm:text-sm">
                 <div className="flex items-center gap-2">
                     <div className="w-6 h-6 relative flex items-center justify-center">

@@ -54,13 +54,13 @@ function HeroSection() {
                     </div>
                 </div>
 
-                {/* Right Column: Canvas & Terminal Visuals */}
+
                 <div className="relative w-full md:w-[45%] mt-6 md:mt-0">
                     <div className="w-full h-56 hidden md:block">
                         <InteractiveHeroCanvas lineWidth={1} />
                     </div>
 
-                    <div className="flex flex-col-reverse md:flex-row gap-4 md:gap-8 absolute top-0 md:-top-16 w-full">
+                    <div className="flex flex-col-reverse md:flex-row gap-4 md:gap-8  block md:absolute top-0 md:-top-16 w-full">
                         <div className="w-full rotate-0 md:rotate-6 mt-2 md:mt-12 transition-transform">
                             <LiveLogTerminal />
                         </div>

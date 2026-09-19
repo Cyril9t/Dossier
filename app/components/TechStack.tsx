@@ -70,7 +70,7 @@ const tools = [
 function TechStack() {
     return (
         <div className="mt-20 w-full">
-            {/* Section Header */}
+
             <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-10">
                 <div className="flex items-center gap-3">
                     <p className="text-xl font-bold tracking-widest">MY TECH STACK</p>
@@ -79,10 +79,10 @@ function TechStack() {
                 <p className="text-foreground/65 text-sm tracking-wide">Tools I use to build, ship, and scale</p>
             </div>
 
-            {/* Cards Grid */}
+
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch justify-self-center w-full p-1 overflow-hidden">
 
-                {/* Core Stack Card */}
+
                 <div className="w-full flex">
                     <div className="w-full">
                         <NeonBorder>
@@ -122,7 +122,7 @@ function TechStack() {
                     </div>
                 </div>
 
-                {/* Database & Backend Card */}
+
                 <div className="w-full flex">
                     <div className="w-full">
                         <NeonBorder>
@@ -199,7 +199,7 @@ function TechStack() {
                     </div>
                 </div>
 
-                {/* DevOps & Tools Card */}
+
                 <div className="w-full flex">
                     <div className="w-full">
                         <NeonBorder>
