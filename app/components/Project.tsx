@@ -43,19 +43,15 @@ export default function FeaturedProjects() {
     ];
 
     return (
-        <div className="">
+        <div className="mt-15">
+
             <div className="">
-
-
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 gap-4">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-10">
                     <div className="flex items-center gap-3">
-                        <h2 className="text-xs tracking-widest text-emerald-400 font-semibold uppercase">Featured Projects</h2>
-                        <span className="text-emerald-700">—</span>
-                        <span className="text-xs text-gray-400">Real projects. Real solutions.</span>
+                        <p className="text-xl font-bold tracking-widest">FEATURED PROJECTS</p>
+                        <span className="w-7 h-0.5 rounded-2xl bg-primary inline-block"></span>
                     </div>
-                    <a href="#all-projects" className="text-xs text-emerald-400 hover:underline font-medium inline-flex items-center gap-1">
-                        View All Projects <span>↗</span>
-                    </a>
+                    <p className="text-foreground/65 text-sm tracking-wide">Real projects, Real solutions.</p>
                 </div>
 
 
