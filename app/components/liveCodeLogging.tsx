@@ -20,14 +20,14 @@ const script: Entry[] = [
 ];
 
 const toneClass: Record<string, string> = {
-    normal: "text-emerald-400",
-    success: "text-emerald-300 font-semibold",
-    warn: "text-amber-400",
+    normal: "text-emerald-300",
+    success: "text-emerald-200 font-semibold",
+    warn: "text-amber-300",
 };
 
-const TYPE_SPEED_MS = 18; // per character
-const LINE_PAUSE_MS = 260; // pause after a line finishes, before the next starts
-const LOOP_PAUSE_MS = 3200; // pause after the whole script finishes, before restarting
+const TYPE_SPEED_MS = 18;
+const LINE_PAUSE_MS = 240;
+const LOOP_PAUSE_MS = 3200;
 
 export default function DeveloperTerminalAnimated() {
     const [completedLines, setCompletedLines] = useState<Entry[]>([]);
@@ -38,93 +38,94 @@ export default function DeveloperTerminalAnimated() {
     const currentText = currentEntry ? currentEntry.text.slice(0, charIdx) : "";
 
     useEffect(() => {
-        // whole script finished — pause, then restart the loop
         if (!currentEntry) {
-            const t = setTimeout(() => {
+            const timeout = setTimeout(() => {
                 setCompletedLines([]);
                 setLineIdx(0);
                 setCharIdx(0);
             }, LOOP_PAUSE_MS);
-            return () => clearTimeout(t);
+            return () => clearTimeout(timeout);
         }
 
-        // still typing the current line, one character at a time
         if (charIdx < currentEntry.text.length) {
-            const t = setTimeout(() => setCharIdx((c) => c + 1), TYPE_SPEED_MS);
-            return () => clearTimeout(t);
+            const timeout = setTimeout(() => setCharIdx((value) => value + 1), TYPE_SPEED_MS);
+            return () => clearTimeout(timeout);
         }
 
-        // current line just finished typing — commit it, then move to the next line
-        const t = setTimeout(() => {
-            setCompletedLines((prev) => [...prev, currentEntry]);
-            setLineIdx((i) => i + 1);
+        const timeout = setTimeout(() => {
+            setCompletedLines((previous) => [...previous, currentEntry]);
+            setLineIdx((value) => value + 1);
             setCharIdx(0);
         }, LINE_PAUSE_MS);
-        return () => clearTimeout(t);
+
+        return () => clearTimeout(timeout);
     }, [lineIdx, charIdx, currentEntry]);
 
     const renderEntry = (entry: Entry, text: string, showCursor: boolean) =>
         entry.kind === "box" ? (
             <div
                 key={entry.id}
-                className="border border-emerald-900 text-emerald-300 bg-emerald-500/5 rounded-md px-4 py-3 whitespace-pre-wrap my-2"
+                className="my-2 whitespace-pre-wrap rounded-xl border border-emerald-500/20 bg-emerald-500/5 px-4 py-3 text-emerald-200"
             >
                 {text}
-                {showCursor && <span className="inline-block w-2 h-4 bg-emerald-400 ml-1 align-middle animate-pulse" />}
+                {showCursor && <span className="ml-1 inline-block h-4 w-2 align-middle bg-emerald-400 animate-pulse" />}
             </div>
         ) : (
-            <div key={entry.id} className={toneClass[entry.tone ?? "normal"]}>
+            <div key={entry.id} className={`${toneClass[entry.tone ?? "normal"]} leading-relaxed`}>
                 {text}
-                {showCursor && <span className="inline-block w-2 h-4 bg-emerald-400 ml-1 align-middle animate-pulse" />}
+                {showCursor && <span className="ml-1 inline-block h-4 w-2 align-middle bg-emerald-400 animate-pulse" />}
             </div>
         );
 
     return (
-        <div className="w-full max-w-3xl mx-auto rounded-xl bg-gray-950 border border-gray-800 font-mono text-xs shadow-2xl overflow-hidden">
-            {/* Header */}
-            <div className="flex items-center justify-between px-4 py-3 bg-gray-900/80 border-b border-gray-800/60">
-                <div className="flex items-center space-x-2">
-                    <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
-                </div>
-                <div className="text-gray-400 text-xs font-medium">engineer.manifesto</div>
-                <div className="flex items-center space-x-2 text-emerald-400 text-[11px]">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-                    <span>Live</span>
-                </div>
-            </div>
+        <div className="relative mx-auto w-full overflow-hidden rounded-[22px] border border-border  font-mono text-[12px] bg-background scrollbar-none">
+            {/* <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(16,185,129,0.12),transparent_56%)]" />
+            <div className="pointer-events-none absolute inset-0 opacity-25 " /> */}
 
-            {/* Tabs (decorative) */}
-            <div className="flex items-center space-x-2 px-4 py-2 border-b border-gray-900 bg-gray-950/60">
-                {["git log", "manifesto", "tail -f", "npm test"].map((t) => (
-                    <span
-                        key={t}
-                        className={`text-[11px] px-2.5 py-1 rounded-md border ${t === "manifesto"
-                            ? "bg-emerald-500/10 text-emerald-400 border-emerald-800"
-                            : "border-gray-800 text-gray-500"
-                            }`}
-                    >
-                        {t}
-                    </span>
-                ))}
-            </div>
-
-            {/* Body */}
-            <div className="p-5 space-y-2 min-h-[200px] max-h-[250px] overflow-scroll flex flex-col scrollbar-thumb-mauve-800">
-                <div className="space-y-2 flex-1">
-                    {completedLines.map((entry) => renderEntry(entry, entry.text, false))}
-                    {currentEntry && renderEntry(currentEntry, currentText, true)}
-                </div>
-
-                {/* Live indicator */}
-                <div className="pt-4 flex items-center justify-between border-t border-gray-900 mt-4">
-                    <div className="flex items-center space-x-2 text-emerald-400">
-                        <span>&gt;_</span>
+            <div className="relative">
+                <div className="flex items-center justify-between border-b border-border px-4 py-3 backdrop-blur-sm">
+                    <div className="flex items-center gap-2">
+                        <span className="h-2.5 w-2.5 rounded-full bg-red-500/80 " />
+                        <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/80 " />
+                        <span className="h-2.5 w-2.5 rounded-full bg-green-500/80 " />
                     </div>
-                    <div className="flex items-center space-x-2 text-emerald-400 text-[11px]">
-                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-                        <span>Live Logs</span>
+
+                    <div className="text-[12px] uppercase tracking-widest text-white">
+                        engineer.manifesto
+                    </div>
+
+                    <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.18em] text-primary">
+                        <span className="h-2 w-2 animate-ping rounded-full bg-primary" />
+                        <span>live</span>
+                    </div>
+                </div>
+
+                <div className="flex items-center gap-2 border-b border-border bg-secondary/26 px-4 py-2.5 ">
+                    {['git log', 'manifesto', 'tail -f', 'npm test'].map((tab) => (
+                        <span
+                            key={tab}
+                            className={`rounded-md border px-2.5 py-1 text-[10px] uppercase tracking-[0.14em] transition-colors duration-200 ${tab === 'manifesto'
+                                ? 'border-border bg-secondary text-primary shadow-[inset_0_1px_0_rgba(16,185,129,0.15)]'
+                                : 'border-emerald-500/10 bg-transparent text-emerald-100/45'}
+                            `}
+                        >
+                            {tab}
+                        </span>
+                    ))}
+                </div>
+
+                <div className="flex min-h-45 max-h-40 flex-col gap-2 overflow-y-auto p-4 scrollbar-none">
+                    <div className="flex flex-1 flex-col gap-2">
+                        {completedLines.map((entry) => renderEntry(entry, entry.text, false))}
+                        {currentEntry && renderEntry(currentEntry, currentText, true)}
+                    </div>
+
+                    <div className="mt-2 flex items-center justify-between border-t border-emerald-500/10 pt-3 text-[10px] uppercase tracking-[0.18em] text-emerald-300">
+                        <span className="text-emerald-200">&gt;_</span>
+                        <div className="flex items-center gap-2">
+                            <span className="h-2 w-2 animate-ping rounded-full bg-emerald-400" />
+                            <span>Live logs</span>
+                        </div>
                     </div>
                 </div>
             </div>

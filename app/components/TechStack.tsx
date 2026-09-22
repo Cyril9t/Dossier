@@ -250,10 +250,12 @@ function TechStack() {
                                         <span className="text-xs mt-1.5 font-medium text-foreground/80">{tools[3].name}</span>
                                     </div>
 
-                                    <div className="perspective-1000 flex items-center justify-center">
+                                    <div className="relative perspective-1000 flex items-center justify-center bg-black/50 rounded-2xl h-19 w-19">
                                         <div className="w-24 h-24 relative flex items-center justify-center">
                                             <RotatingCube size={38} color="#0c1a15" />
                                         </div>
+
+                                        <span className="absolute -bottom-6 text-xs text-primary" >workflow</span>
                                     </div>
                                 </div>
 

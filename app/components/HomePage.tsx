@@ -2,7 +2,7 @@ import HeroSection from "./HeroSection";
 import Navbar from "./Navbar"
 import TechStack from "../components/TechStack"
 import Project from "./Project";
-import DeveloperTerminal from "./Therminal";
+import DeveloperTerminal from "./Terminal";
 import ContactMe from "./contact";
 import Footer from "./footer";
 import Nav from "./Nav";
