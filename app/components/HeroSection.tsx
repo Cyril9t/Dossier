@@ -21,17 +21,17 @@ const logs = [
 
 function HeroSection() {
     return (
-        <div className="w-full">
-            {/* Greeting Header */}
+        <div className="w-full" id="home">
+
             <div className="flex items-center gap-3 mb-8">
                 <h1 className="text-foreground/65 text-2xl font-medium">Hi, I'm Cyril</h1>
                 <span className="w-7 h-0.5 rounded-2xl bg-primary inline-block"></span>
             </div>
 
-            {/* Main Content Layout */}
+
             <div className="flex gap-12 md:gap-20 flex-col md:flex-row items-start">
 
-                {/* Left Column: Text & Actions */}
+
                 <div className="flex flex-col gap-6 w-full md:w-[55%]">
                     <p className="text-4xl sm:text-5xl md:text-7xl text-primary font-bold leading-tight">
                         <span className="text-foreground">Building</span> scalable systems <span className="text-foreground">&</span> fluid interfaces.
@@ -44,10 +44,10 @@ function HeroSection() {
                     </div>
 
                     <div className="flex flex-col sm:flex-row gap-4 w-full pt-2">
-                        <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-6 py-6 flex items-center justify-center gap-2 font-medium">
+                        <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-4 py-4 flex items-center justify-center gap-2 font-medium">
                             Explore Work <ArrowRight className="w-4 h-4" />
                         </Button>
-                        <Button variant="outline" className="rounded-full px-6 py-6 flex items-center justify-center gap-2 font-medium">
+                        <Button variant="outline" className="rounded-full px-4 py-4 flex items-center justify-center gap-2 font-medium">
                             View GitHub Profile
                             <SiGithub className="w-4 h-4" />
                         </Button>

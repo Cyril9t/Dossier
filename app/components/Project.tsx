@@ -43,7 +43,7 @@ export default function FeaturedProjects() {
     ];
 
     return (
-        <div className="mt-15">
+        <div className="mt-15" id="projects">
 
             <div className="">
                 <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-10">

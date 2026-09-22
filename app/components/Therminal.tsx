@@ -265,7 +265,7 @@ c3d4e5f6a1b2   redis:7-alpine   Up 3 hours      6379/tcp`,
     const quickRuns = ["git log", "tail -f", "npm test", "cat bio.txt", "contact --open"];
 
     return (
-        <div className="bg-background min-h-full mt-15">
+        <div className="bg-background min-h-full mt-15" id="terminal">
             <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-10">
                 <div className="flex items-center gap-3">
                     <p className="text-xl font-bold tracking-widest">DEVELOPER TERMINAL</p>
@@ -282,12 +282,12 @@ c3d4e5f6a1b2   redis:7-alpine   Up 3 hours      6379/tcp`,
         @keyframes ct-flicker{0%,96%,100%{opacity:1;}97%{opacity:.86;}98%{opacity:1;}99%{opacity:.9;}}
       `}</style>
 
-            <div className="w-full font-mono text-[13px] border border-border rounded-[10px] overflow-hidden bg-[#0b0f0c] animate-[ct-flicker_7s_linear_infinite] scrollbar-none">
+            <div className="w-full font-mono text-[13px] border border-border rounded-[10px] overflow-hidden bg-secondary/24 animate-[ct-flicker_7s_linear_infinite] scrollbar-none">
                 <div className="flex justify-between items-center px-4 py-2.5 border-b  flex-wrap gap-2">
                     <div className="text-chart-2 font-bold tracking-[0.08em] text-xs">
                         DEVELOPER TERMINAL <span className="text-primary font-normal ml-2">— Interactive shell &amp; developer playground.</span>
                     </div>
-                    <div className="text-[#5a7a68] text-[11px] flex gap-3.5 items-center flex-wrap">
+                    <div className="text-primary text-[11px] flex gap-3.5 items-center flex-wrap">
                         <span>
                             <span className="w-1.75 h-1.75 rounded-full bg-primary inline-block mr-1.5" />
                             node: v20.12.2 LTS

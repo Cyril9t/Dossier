@@ -69,7 +69,7 @@ const tools = [
 
 function TechStack() {
     return (
-        <div className="mt-20 w-full">
+        <div id="techStack" className="mt-20 w-full">
 
             <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-10">
                 <div className="flex items-center gap-3">

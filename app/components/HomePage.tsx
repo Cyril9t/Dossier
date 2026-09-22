@@ -3,6 +3,9 @@ import Navbar from "./Navbar"
 import TechStack from "../components/TechStack"
 import Project from "./Project";
 import DeveloperTerminal from "./Therminal";
+import ContactMe from "./contact";
+import Footer from "./footer";
+import Nav from "./Nav";
 function Homepage() {
     return (
         <div >
@@ -12,6 +15,9 @@ function Homepage() {
                 <TechStack />
                 <Project />
                 <DeveloperTerminal />
+                <ContactMe />
+                <Nav />
+                <Footer />
             </div>
         </div>);
 }

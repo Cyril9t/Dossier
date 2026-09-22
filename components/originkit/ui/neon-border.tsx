@@ -20,12 +20,12 @@ type Props = {
 
 const DEFAULTS = {
     color: "rgba(16, 185, 129, 0.15)",
-    rounded: 24,
+    rounded: 12,
     thickness: 1,
     borderSize: 30,
     glow: 3,
     movement: "continuous" as const,
-    speed: 16,
+    speed: 20,
 
 };
 
