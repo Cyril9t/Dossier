@@ -38,18 +38,18 @@ export default function Nav({
     };
 
     return (
-        <div className="fixed bottom-3 left-1/2 z-50 w-[calc(100%-1rem)] max-w-[32rem] -translate-x-1/2 sm:bottom-6">
+        <div className="fixed bottom-3 left-1/2 z-50 w-[min(92vw,32rem)] -translate-x-1/2 sm:bottom-6">
             <div className="rounded-full border border-border bg-background/70 p-1 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.25)]">
                 <nav className="flex items-center justify-between gap-1 rounded-full bg-background/20 px-1.5 py-2 sm:px-3">
                     {items.map(({ id, label, icon: Icon }) => {
                         const isActive = id === active;
                         return (
-                            <Link key={id} href={`#${id}`} className="flex-1">
+                            <Link key={id} href={`#${id}`} className="min-w-0 flex-1">
                                 <button
                                     type="button"
                                     aria-pressed={isActive}
                                     onClick={() => select(id)}
-                                    className="relative flex w-full flex-col items-center justify-center rounded-full px-2 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:px-4"
+                                    className="relative flex w-full min-w-[2.8rem] flex-col items-center justify-center rounded-full px-1.5 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:min-w-[3.5rem] sm:px-3"
                                 >
                                     <motion.div
                                         animate={{
@@ -62,7 +62,7 @@ export default function Nav({
                                     </motion.div>
 
                                     <span
-                                        className={`mt-0.5 text-[10px] font-medium transition-colors duration-200 sm:text-[11px] ${isActive ? "text-primary" : "text-muted-foreground/70"}`}
+                                        className={`mt-0.5 hidden text-[9px] font-medium transition-colors duration-200 sm:inline sm:text-[11px] ${isActive ? "text-primary" : "text-muted-foreground/70"}`}
                                     >
                                         {label}
                                     </span>
