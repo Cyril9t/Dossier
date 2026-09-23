@@ -55,13 +55,13 @@ function HeroSection() {
                         <InteractiveHeroCanvas lineWidth={1} />
                     </div>
 
-                    <div className="block w-full md:absolute md:-top-16 md:flex md:flex-row md:items-start md:gap-8">
+                    <div className="flex w-full md:absolute md:-top-16  flex-col-reverse md:flex-row md:items-start md:gap-8">
                         <div className="mt-2 w-full md:mt-12 md:w-[70%] md:rotate-2">
                             <LiveLogTerminal />
                         </div>
-                        <div className="mt-4 flex w-full flex-row justify-start gap-3 md:mt-12 md:w-[30%] md:flex-col md:items-start">
+                        <div className="mt-3 flex w-full flex-row justify-start gap-1 md:gap-3 md:mt-12 md:w-[30%] md:flex-col md:items-start">
                             {logs.map((c) => (
-                                <div key={c.code} className="font-mono text-sm tracking-[0.18em] text-emerald-300/75">
+                                <div key={c.code} className="font-mono text-sm tracking-tight md:tracking-wide text-primary">
                                     <p>{c.code}</p>
                                 </div>
                             ))}

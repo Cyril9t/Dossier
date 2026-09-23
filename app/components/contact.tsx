@@ -420,7 +420,7 @@ export default function ContactMe() {
 
                         <div className="flex items-center justify-between px-4 py-3  border-b border-border">
 
-                            <div className="flex items-center gap-2">
+                            <div className="flex items-center gap-1 md:gap-2">
                                 <div className="w-3 h-3 rounded-full bg-rose-500/80 border border-rose-600/30 hover:opacity-80 cursor-pointer" />
                                 <div className="w-3 h-3 rounded-full bg-amber-500/80 border border-amber-600/30 hover:opacity-80 cursor-pointer" />
                                 <div className="w-3 h-3 rounded-full bg-primary border border-border hover:opacity-80 cursor-pointer" />
@@ -429,7 +429,7 @@ export default function ContactMe() {
 
                             <div className="flex items-center gap-2 font-mono  text-[14px]">
                                 <FileCode size={19} className="text-primary" />
-                                <span className=" font-semibold">send_inquiry.sh</span>
+                                <span className="text-[11px] md:text-xl font-semibold">send_inquiry.sh</span>
                             </div>
 
 
@@ -438,12 +438,12 @@ export default function ContactMe() {
                                     variant={"outline"}
                                     type="button"
                                     onClick={() => setViewMode((prev) => (prev === 'form' ? 'json' : 'form'))}
-                                    className="font-mono text-[12px] h-8"
+                                    className="font-mono text-[12px] h-6 md:h-8"
                                     title="Toggle raw JSON preview"
                                 >
                                     {viewMode === 'form' ? '{ } JSON' : 'Form'}
                                 </Button>
-                                <Button variant={"outline"} className="font-mono text-[12px] h-8 text-primary">
+                                <Button variant={"outline"} className="font-mono text-[12px] h-6 md:h-8 text-primary">
                                     bash
                                 </Button>
                             </div>
@@ -662,7 +662,7 @@ export default function ContactMe() {
                         </div>
 
 
-                        <div className="px-4 py-2 bg-background border-t flex items-center justify-between text-[13px] font-mono text-text">
+                        <div className="px-4 py-2 bg-background border-t flex items-center justify-between text-[10px] md:text-[13px] font-mono text-text">
 
                             <div className="flex items-center gap-3">
                                 <span className="flex items-center gap-1">
