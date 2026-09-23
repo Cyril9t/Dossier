@@ -846,41 +846,37 @@ c3d4e5f6a1b2   redis:7-alpine     Up 3 hours
     ];
 
     return (
-
-        <section
-            id="terminal"
-            className="mt-15 min-h-full bg-background"
-        >
-            <div className="mb-10 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+        <section id="terminal" className="mt-12 min-h-full bg-background sm:mt-15">
+            <div className="mb-6 flex flex-col gap-2 sm:mb-10 sm:flex-row sm:items-center sm:gap-4">
                 <div className="flex items-center gap-3">
-                    <p className="text-xl font-bold tracking-widest">
+                    <p className="text-lg font-bold tracking-widest sm:text-xl">
                         DEVELOPER TERMINAL
                     </p>
 
                     <span className="inline-block h-0.5 w-7 rounded-full bg-primary" />
                 </div>
 
-                <p className="text-sm tracking-wide text-foreground/65">
+                <p className="text-xs tracking-wide text-foreground/65 sm:text-sm">
                     Interactive shell & developer playground.
                 </p>
             </div>
 
             <div
                 className="
-      w-full
-      overflow-hidden
-      rounded-xl
-      border
-      border-border
-      bg-secondary/20
-      font-mono
-      text-[13px]
-      shadow-[0_20px_80px_rgba(0,0,0,0.22)]
-      animate-ct-flicker
-    "
+                    w-full
+                    overflow-hidden
+                    rounded-xl
+                    border
+                    border-border
+                    bg-secondary/20
+                    font-mono
+                    text-[12px]
+                    shadow-[0_20px_80px_rgba(0,0,0,0.22)]
+                    animate-ct-flicker
+                    sm:text-[13px]
+                "
             >
-                {/* Header */}
-                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-4 py-3">
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-3 py-3 sm:px-4">
                     <div className="flex items-center gap-3">
                         <div className="flex items-center gap-1.5">
                             <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
@@ -888,28 +884,24 @@ c3d4e5f6a1b2   redis:7-alpine     Up 3 hours
                             <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
                         </div>
 
-                        <span className="hidden text-xs font-semibold tracking-[0.08em] text-chart-2 sm:inline">
+                        <span className="hidden text-[10px] font-semibold tracking-[0.08em] text-chart-2 sm:inline sm:text-xs">
                             DEVELOPER TERMINAL
                         </span>
                     </div>
 
-                    <div className="flex items-center gap-3 text-[10px] text-muted-foreground sm:text-[11px]">
+                    <div className="flex items-center gap-2 text-[9px] text-muted-foreground sm:gap-3 sm:text-[10px]">
                         <span className="flex items-center gap-1.5">
                             <span className="h-1.5 w-1.5 rounded-full bg-primary shadow-[0_0_8px_rgba(16,185,129,0.7)]" />
                             node v20.12.2
                         </span>
 
-                        <span className="hidden sm:inline">
-                            {USER}
-                        </span>
+                        <span className="hidden sm:inline">{USER}</span>
                     </div>
                 </div>
 
-                {/* Tabs */}
-                <div className="flex flex-wrap items-center gap-1.5 border-b border-border px-4 py-2">
+                <div className="flex flex-wrap items-center gap-1.5 border-b border-border px-3 py-2 sm:px-4">
                     {tabs.map((tab) => {
-                        const isActive =
-                            tab.command === "cat /etc/engineer.manifesto";
+                        const isActive = tab.command === "cat /etc/engineer.manifesto";
 
                         return (
                             <button
@@ -918,20 +910,22 @@ c3d4e5f6a1b2   redis:7-alpine     Up 3 hours
                                 disabled={busy}
                                 onClick={() => execute(tab.command)}
                                 className={`
-              rounded-md
-              border
-              px-2.5
-              py-1
-              text-[11px]
-              transition-all
-              duration-150
-              disabled:cursor-not-allowed
-              disabled:opacity-40
-              ${isActive
+                                    rounded-md
+                                    border
+                                    px-2
+                                    py-1
+                                    text-[10px]
+                                    transition-all
+                                    duration-150
+                                    disabled:cursor-not-allowed
+                                    disabled:opacity-40
+                                    sm:px-2.5
+                                    sm:text-[11px]
+                                    ${isActive
                                         ? "border-primary/30 bg-primary/10 text-primary"
                                         : "border-border text-muted-foreground hover:border-primary/20 hover:bg-primary/5 hover:text-foreground"
                                     }
-            `}
+                                `}
                             >
                                 {tab.label}
                             </button>
@@ -939,49 +933,40 @@ c3d4e5f6a1b2   redis:7-alpine     Up 3 hours
                     })}
                 </div>
 
-                {/* Terminal Screen */}
                 <div
                     ref={screenRef}
                     onClick={() => inputRef.current?.focus()}
                     className="
-                            h-[56vh]
-                            min-h-85
-                            overflow-x-auto
-                            overflow-y-auto
-                            px-4
-                            py-5
-                            leading-[1.65]
-                            scrollbar-none
-                            sm:px-5
-                        "
+                        h-[46vh]
+                        min-h-[240px]
+                        overflow-x-auto
+                        overflow-y-auto
+                        px-3
+                        py-4
+                        leading-[1.65]
+                        scrollbar-none
+                        sm:h-[56vh]
+                        sm:min-h-[340px]
+                        sm:px-5
+                    "
                 >
                     {history.map((line) => (
                         <div
                             key={line.id}
-                            className={` animate-ct-fade ${line.type === "box"
-                                ? "my-1 whitespace-pre-wrap rounded-lg border border-primary/20 bg-primary/[0.035] px-4 py-3 text-primary"
-                                : "wrap-break-words "
+                            className={`animate-ct-fade ${line.type === "box"
+                                ? "my-1 whitespace-pre-wrap rounded-lg border border-primary/20 bg-primary/[0.035] px-3 py-2 text-primary sm:px-4 sm:py-3"
+                                : "wrap-break-words"
                                 }`}
-                            dangerouslySetInnerHTML={{
-                                __html: line.html,
-                            }}
-
+                            dangerouslySetInnerHTML={{ __html: line.html }}
                         />
                     ))}
 
-                    {/* Prompt */}
                     <div className="mt-1 flex min-w-0 items-center gap-2">
-                        <span className="shrink-0 text-primary">
-                            {USER}
-                        </span>
+                        <span className="shrink-0 text-primary">{USER}</span>
 
-                        <span className="hidden shrink-0 text-muted-foreground/60 sm:inline">
-                            {CWD}
-                        </span>
+                        <span className="hidden shrink-0 text-muted-foreground/60 sm:inline">{CWD}</span>
 
-                        <span className="shrink-0 text-primary">
-                            $
-                        </span>
+                        <span className="shrink-0 text-primary">$</span>
 
                         <input
                             ref={inputRef}
@@ -991,31 +976,27 @@ c3d4e5f6a1b2   redis:7-alpine     Up 3 hours
                             autoCapitalize="off"
                             spellCheck={false}
                             aria-label="Terminal command input"
-                            placeholder={
-                                busy
-                                    ? "initializing..."
-                                    : 'type "help" to begin'
-                            }
-                            onChange={(
-                                event: ChangeEvent<HTMLInputElement>
-                            ) => {
+                            placeholder={busy ? "initializing..." : 'type "help" to begin'}
+                            onChange={(event: ChangeEvent<HTMLInputElement>) => {
                                 setInput(event.target.value);
                                 setHistoryIndex(-1);
                             }}
                             onKeyDown={handleKeyDown}
                             className="
-            min-w-0
-            flex-1
-            border-none
-            bg-transparent
-            font-mono
-            text-foreground
-            outline-none
-            placeholder:text-muted-foreground/30
-            caret-primary
-            disabled:cursor-not-allowed
-            disabled:opacity-50
-          "
+                                min-w-0
+                                flex-1
+                                border-none
+                                bg-transparent
+                                font-mono
+                                text-[12px]
+                                text-foreground
+                                outline-none
+                                placeholder:text-muted-foreground/30
+                                caret-primary
+                                disabled:cursor-not-allowed
+                                disabled:opacity-50
+                                sm:text-[13px]
+                            "
                         />
 
                         {busy && (
@@ -1024,10 +1005,9 @@ c3d4e5f6a1b2   redis:7-alpine     Up 3 hours
                     </div>
                 </div>
 
-                {/* Footer */}
-                <div className="flex flex-col gap-3 border-t border-border px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex flex-col gap-3 border-t border-border px-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-4">
                     <div className="flex flex-wrap items-center gap-1.5">
-                        <span className="mr-1 text-[11px] text-muted-foreground">
+                        <span className="mr-1 text-[10px] text-muted-foreground sm:text-[11px]">
                             Quick run:
                         </span>
 
@@ -1038,34 +1018,34 @@ c3d4e5f6a1b2   redis:7-alpine     Up 3 hours
                                 disabled={busy}
                                 onClick={() => execute(command)}
                                 className="
-              rounded-md
-              border
-              border-primary/15
-              bg-primary/5
-              px-2.5
-              py-1
-              text-[11px]
-              text-primary
-              transition-all
-              hover:border-primary/30
-              hover:bg-primary/10
-              active:scale-[0.97]
-              disabled:cursor-not-allowed
-              disabled:opacity-40
-            "
+                                    rounded-md
+                                    border
+                                    border-primary/15
+                                    bg-primary/5
+                                    px-2
+                                    py-1
+                                    text-[10px]
+                                    text-primary
+                                    transition-all
+                                    hover:border-primary/30
+                                    hover:bg-primary/10
+                                    active:scale-[0.97]
+                                    disabled:cursor-not-allowed
+                                    disabled:opacity-40
+                                    sm:px-2.5
+                                    sm:text-[11px]
+                                "
                             >
                                 {command}
                             </button>
                         ))}
                     </div>
 
-                    <div className="text-[10px] text-muted-foreground/60 sm:text-[11px]">
+                    <div className="text-[9px] text-muted-foreground/60 sm:text-[11px]">
                         ↑ ↓ history · Enter execute · Ctrl+C stop
                     </div>
                 </div>
             </div>
         </section>
-
-
     );
 }

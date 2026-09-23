@@ -277,7 +277,7 @@ export default function ContactMe() {
     };
 
     return (
-        <div className="relative overflow-x-hidden flex w-full mt-10">
+        <div className="relative overflow-x-hidden flex w-full mt-10" id='contact'>
             <CustomStyles />
 
             <div className="fixed top-5 right-5 z-50 flex flex-col gap-2 max-w-sm">
