@@ -1,5 +1,4 @@
 import { ServerCog } from "lucide-react";
-import from "../../components/originkit/ui/neon-border"
 import { SiCloudinary, SiDenodeploy, SiDevbox, SiDocker, SiExpress, SiGit, SiJavascript, SiNextdotjs, SiNodedotjs, SiPostgresql, SiPrisma, SiReact, SiTypescript, SiVercel } from "@icons-pack/react-simple-icons";
 import RotatingCube from "./Cub";
 
