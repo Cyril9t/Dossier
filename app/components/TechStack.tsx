@@ -1,5 +1,5 @@
 import { ServerCog } from "lucide-react";
-import NeonBorder from "../../components/originkit/ui/neon-border"
+import from "../../components/originkit/ui/neon-border"
 import { SiCloudinary, SiDenodeploy, SiDevbox, SiDocker, SiExpress, SiGit, SiJavascript, SiNextdotjs, SiNodedotjs, SiPostgresql, SiPrisma, SiReact, SiTypescript, SiVercel } from "@icons-pack/react-simple-icons";
 import RotatingCube from "./Cub";
 
@@ -85,7 +85,7 @@ function TechStack() {
 
                 <div className="w-full flex">
                     <div className="w-full">
-                        <NeonBorder>
+                        < >
                             <div className="flex flex-col h-full gap-6">
                                 <div className="flex items-center gap-4">
                                     <div className="p-2.5 bg-emerald-950/20  border border-border text-primary rounded-[14px] flex items-center justify-center">
@@ -118,14 +118,14 @@ function TechStack() {
                                     </span>
                                 </div>
                             </div>
-                        </NeonBorder>
+                        </ >
                     </div>
                 </div>
 
 
                 <div className="w-full flex">
                     <div className="w-full">
-                        <NeonBorder>
+                        < >
                             <div className="flex flex-col h-full gap-6">
                                 <div className="flex items-center gap-4">
                                     <div className="p-2.5 bg-emerald-950/20 font-bold border border-border text-primary rounded-[14px] flex items-center justify-center">
@@ -195,14 +195,14 @@ function TechStack() {
                                     </span>
                                 </div>
                             </div>
-                        </NeonBorder>
+                        </ >
                     </div>
                 </div>
 
 
                 <div className="w-full flex">
                     <div className="w-full">
-                        <NeonBorder>
+                        < >
                             <div className="flex flex-col h-full gap-6">
                                 <div className="flex items-center gap-4">
                                     <div className="p-2.5 bg-emerald-950/20 font-bold border border-border text-primary rounded-[14px] flex items-center justify-center">
@@ -267,7 +267,7 @@ function TechStack() {
                                     </span>
                                 </div>
                             </div>
-                        </NeonBorder>
+                        </ >
                     </div>
                 </div>
 
