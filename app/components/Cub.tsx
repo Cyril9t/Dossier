@@ -7,8 +7,8 @@ import React, { CSSProperties } from "react";
  *
  * Props:
  * - size        : number  -> cube edge length in px (default 100)
- * - color       : string  -> face background color (default "#4f46e5")
- * - borderColor : string  -> border color of each face (default "#ffffff")
+ * - color       : string  -> face background color (default "var(--background)")
+ * - borderColor : string  -> border color of each face (default "var(--primary)")
  * - borderWidth : number  -> border thickness in px (default 2)
  * - duration    : number  -> full rotation duration in seconds (default 8)
  * - faceOpacity : number  -> 0-1 opacity of each face (default 0.85)
@@ -24,8 +24,8 @@ interface RotatingCubeProps {
 
 const RotatingCube: React.FC<RotatingCubeProps> = ({
     size = 100,
-    color = "#030706",
-    borderColor = "#10b981",
+    color = "var(--background)",
+    borderColor = "var(--primary)",
     borderWidth = 2,
     duration = 8,
     faceOpacity = 0.85,

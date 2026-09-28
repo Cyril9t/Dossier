@@ -1,277 +1,264 @@
-import { ServerCog } from "lucide-react";
-import { SiCloudinary, SiDenodeploy, SiDevbox, SiDocker, SiExpress, SiGit, SiJavascript, SiNextdotjs, SiNodedotjs, SiPostgresql, SiPrisma, SiReact, SiTypescript, SiVercel } from "@icons-pack/react-simple-icons";
-import RotatingCube from "./Cub";
+"use client";
 
-const STACK = [
-    {
-        name: "JavaScript",
-        icon: <SiJavascript color="#F7DF1E" height={25} />
-    },
-    {
-        name: "TypeScript",
-        icon: <SiTypescript color="#3178C6" height={25} />
-    },
-    {
-        name: "React.js",
-        icon: <SiReact color="#61DAFB" height={25} />
-    },
-    {
-        name: "Next.js",
-        icon: <SiNextdotjs height={25} />
-    },
-    {
-        name: "Node.js",
-        icon: <SiNodedotjs color="#339933" height={25} />
-    },
-]
+import {
+    SiCloudinary,
+    SiDocker,
+    SiExpress,
+    SiGit,
+    SiJavascript,
+    SiNextdotjs,
+    SiNodedotjs,
+    SiPostgresql,
+    SiPrisma,
+    SiReact,
+    SiTypescript,
+    SiVercel,
+} from "@icons-pack/react-simple-icons";
 
-const items = [
-    {
-        name: 'PostgreSQL',
-        latency: '32ms',
-        icon: <SiPostgresql color="#4169E1" />
-    },
-    {
-        name: 'Prisma',
-        latency: '18ms',
-        icon: <SiPrisma color="#2D3748" />,
-    },
-    {
-        name: 'Express',
-        latency: '6ms',
-        icon: <SiExpress />
-    },
-];
+const STACK = {
+    Frontend: [
+        {
+            name: "React",
+            icon: <SiReact />,
+        },
+        {
+            name: "TypeScript",
+            icon: <SiTypescript />,
+        },
+        {
+            name: "Next.js",
+            icon: <SiNextdotjs />,
+        },
+        {
+            name: "JavaScript",
+            icon: <SiJavascript />,
+        },
+    ],
 
-const tools = [
-    {
-        name: 'Docker',
-        position: 'top-left',
-        icon: <SiDocker color="#2496ED" />
-    },
-    {
-        name: 'Cloudinary',
-        position: 'bottom-left',
-        icon: <SiCloudinary color="#F05032" />
-    },
-    {
-        name: 'Git',
-        position: 'top-right',
-        icon: <SiGit color="#3448C5" />
-    },
-    {
-        name: 'Vercel',
-        position: 'bottom-right',
-        icon: <SiVercel />
-    },
-];
+    Backend: [
+        {
+            name: "Node.js",
+            icon: <SiNodedotjs />,
+        },
+        {
+            name: "Express",
+            icon: <SiExpress />,
+        },
+        {
+            name: "PostgreSQL",
+            icon: <SiPostgresql />,
+        },
+        {
+            name: "Prisma",
+            icon: <SiPrisma />,
+        },
+    ],
 
-function TechStack() {
+    "Workflow & Infrastructure": [
+        {
+            name: "Git",
+            icon: <SiGit />,
+        },
+        {
+            name: "Docker",
+            icon: <SiDocker />,
+        },
+        {
+            name: "Vercel",
+            icon: <SiVercel />,
+        },
+        {
+            name: "Cloudinary",
+            icon: <SiCloudinary />,
+        },
+    ],
+};
+
+function TechItem({
+    name,
+    icon,
+    index,
+}: {
+    name: string;
+    icon: React.ReactNode;
+    index: number;
+}) {
     return (
-        <div id="techStack" className="mt-20 w-full">
+        <div
+            className="tech-item group"
+            style={{
+                animationDelay: `${index * 140}ms`,
+            }}
+        >
+            <div className="relative flex items-center gap-3">
+                <span className="tech-indicator" />
 
-            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-10">
-                <div className="flex items-center gap-3">
-                    <p className="text-xl font-bold tracking-widest">MY TECH STACK</p>
-                    <span className="w-7 h-0.5 rounded-2xl bg-primary inline-block"></span>
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center border rounded-[9px] border-border/60 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-primary/50">
+                    <div className="text-primary transition-transform duration-300 group-hover:scale-110">
+                        {icon}
+                    </div>
                 </div>
-                <p className="text-foreground/65 text-sm tracking-wide">Tools I use to build, ship, and scale</p>
+
+                {/* Name */}
+                <div className="min-w-0">
+                    <p className="text-sm font-medium text-foreground/70 transition-colors duration-300 group-hover:text-foreground">
+                        {name}
+                    </p>
+
+                    <div className="mt-1 h-px w-0 bg-primary/60 transition-all duration-500 group-hover:w-full" />
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function StackGroup({
+    title,
+    items,
+    startIndex,
+}: {
+    title: string;
+    items: typeof STACK.Frontend;
+    startIndex: number;
+}) {
+    return (
+        <div className="stack-group">
+
+            <div className="mb-4 flex items-center gap-3">
+                <span className="font-mono  uppercase tracking-[0.2em] text-primary">
+                    {title}
+                </span>
+
+                <span className="h-px flex-1 bg-border" />
             </div>
 
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch justify-self-center w-full p-1 overflow-hidden">
+            <div className="grid grid-cols-2 gap-x-8 gap-y-5 sm:grid-cols-4">
+                {items.map((tech, index) => (
+                    <TechItem
+                        key={tech.name}
+                        name={tech.name}
+                        icon={tech.icon}
+                        index={startIndex + index}
+                    />
 
-
-                <div className="w-full flex">
-                    <div className="w-full">
-                        < >
-                            <div className="flex flex-col h-full gap-6">
-                                <div className="flex items-center gap-4">
-                                    <div className="p-2.5 bg-emerald-950/20  border border-border text-primary rounded-[14px] flex items-center justify-center">
-                                        <SiDevbox />
-                                    </div>
-                                    <div>
-                                        <p className="tracking-wide font-medium">Core Stack</p>
-                                        <small className="text-foreground/65 tracking-wide">Frontend & Runtime</small>
-                                    </div>
-                                </div>
-
-                                <div className="grid grid-cols-3 gap-3 w-full">
-                                    {STACK.map((S) => {
-                                        return (
-                                            <div key={S.name} className="flex flex-col items-center text-center ">
-                                                <div className="w-[50%] bg-emerald-950/10 p-3 rounded-[14px] border border-border flex items-center justify-center aspect-square">
-                                                    {S.icon}
-                                                </div>
-                                                <p className="text-[10px] text-foreground/65 tracking-wider mt-2">{S.name}</p>
-                                            </div>
-                                        )
-                                    })}
-                                </div>
-
-                                <div className="flex items-center justify-between pt-4 mt-auto border-t border-border/40">
-                                    <span className="text-xs text-foreground/65 tracking-wide">Primary daily drivers</span>
-                                    <span className="flex items-center gap-1.5 text-xs font-mono text-primary">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-                                        {STACK.length}/5
-                                    </span>
-                                </div>
-                            </div>
-                        </ >
-                    </div>
-                </div>
-
-
-                <div className="w-full flex">
-                    <div className="w-full">
-                        < >
-                            <div className="flex flex-col h-full gap-6">
-                                <div className="flex items-center gap-4">
-                                    <div className="p-2.5 bg-emerald-950/20 font-bold border border-border text-primary rounded-[14px] flex items-center justify-center">
-                                        <ServerCog className="w-5 h-5" />
-                                    </div>
-                                    <div>
-                                        <p className="tracking-wide font-medium">Database & Backend</p>
-                                        <small className="text-foreground/65 tracking-wide">APIs, databases, ORM & caching</small>
-                                    </div>
-                                </div>
-
-                                <div className="flex flex-col gap-3 flex-1">
-                                    {items.map((S) => {
-                                        return (
-                                            <div
-                                                key={S.name}
-                                                className="flex items-center justify-between py-2 border-b border-border/40 last:border-none gap-4"
-                                            >
-                                                <div className="flex items-center gap-3 min-w-30">
-                                                    <div className="flex bg-emerald-950/10 p-2 items-center justify-center rounded-[10px] border border-border">
-                                                        {S.icon}
-                                                    </div>
-                                                    <span className="text-sm font-medium">
-                                                        {S.name}
-                                                    </span>
-                                                </div>
-
-                                                <div className="flex items-center gap-2">
-                                                    <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                                                    <span className="text-xs font-mono text-primary">
-                                                        {S.latency}
-                                                    </span>
-                                                </div>
-
-                                                <div className="h-6 flex items-end w-[25%]">
-                                                    <svg className="w-full h-full text-primary overflow-visible" viewBox="0 0 100 30" fill="none">
-                                                        <path
-                                                            d="M0 22 Q 10 8, 20 18 T 40 12 T 60 20 T 80 10 T 100 15"
-                                                            stroke="currentColor"
-                                                            strokeWidth="1.5"
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round"
-                                                        />
-                                                        <path
-                                                            d="M0 22 Q 10 8, 20 18 T 40 12 T 60 20 T 80 10 T 100 15 L 100 30 L 0 30 Z"
-                                                            fill="url(#emerald-gradient)"
-                                                            opacity="0.15"
-                                                        />
-                                                        <defs>
-                                                            <linearGradient id="emerald-gradient" x1="0" y1="0" x2="0" y2="1">
-                                                                <stop offset="0%" stopColor="#10b981" />
-                                                                <stop offset="100%" stopColor="#10b981" stopOpacity="0" />
-                                                            </linearGradient>
-                                                        </defs>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                        )
-                                    })}
-                                </div>
-
-                                <div className="flex items-center justify-between pt-4 mt-auto border-t border-border/40">
-                                    <span className="text-xs text-foreground/65 tracking-wide">Avg. response time</span>
-                                    <span className="flex items-center gap-1.5 text-xs font-mono text-primary">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-                                        ~19ms
-                                    </span>
-                                </div>
-                            </div>
-                        </ >
-                    </div>
-                </div>
-
-
-                <div className="w-full flex">
-                    <div className="w-full">
-                        < >
-                            <div className="flex flex-col h-full gap-6">
-                                <div className="flex items-center gap-4">
-                                    <div className="p-2.5 bg-emerald-950/20 font-bold border border-border text-primary rounded-[14px] flex items-center justify-center">
-                                        <SiDenodeploy className="w-5 h-5" />
-                                    </div>
-                                    <div>
-                                        <p className="tracking-wide font-medium">DevOps & Tools</p>
-                                        <small className="text-foreground/65 tracking-wide">Deploy, Monitor, & Integrate</small>
-                                    </div>
-                                </div>
-
-                                <div className="relative flex-1 flex items-center justify-center w-full min-h-45">
-                                    <svg className="absolute inset-0 w-full h-full pointer-events-none stroke-chart-1" strokeWidth="1.5" fill="none">
-                                        <line x1="25%" y1="28%" x2="40%" y2="40%" strokeDasharray="4 4" className="animate-pulse" />
-                                        <line x1="75%" y1="31%" x2="60%" y2="45%" />
-                                        <line x1="25%" y1="72%" x2="40%" y2="60%" />
-                                        <line x1="75%" y1="72%" x2="60%" y2="60%" strokeDasharray="4 4" className="animate-pulse" />
-                                    </svg>
-
-                                    <div className="absolute left-2 top-4 flex flex-col items-center group cursor-pointer">
-                                        <div className="p-2.5 border border-border bg-emerald-950/10 rounded-[14px] flex items-center justify-center transition-transform group-hover:scale-105">
-                                            {tools[0].icon}
-                                        </div>
-                                        <span className="text-xs mt-1.5 text-foreground/80">{tools[0].name}</span>
-                                    </div>
-
-                                    <div className="absolute right-2 top-4 flex flex-col items-center group cursor-pointer">
-                                        <div className="p-2.5 border border-border bg-emerald-950/10 rounded-[14px] flex items-center justify-center transition-transform group-hover:scale-105">
-                                            {tools[2].icon}
-                                        </div>
-                                        <span className="text-xs mt-1.5 text-foreground/80">{tools[2].name}</span>
-                                    </div>
-
-                                    <div className="absolute left-2 bottom-4 flex flex-col items-center group cursor-pointer">
-                                        <div className="p-2.5 border border-border bg-emerald-950/10 rounded-[14px] flex items-center justify-center transition-transform group-hover:scale-105">
-                                            {tools[1].icon}
-                                        </div>
-                                        <span className="text-xs mt-1.5 text-foreground/80">{tools[1].name}</span>
-                                    </div>
-
-                                    <div className="absolute right-2 bottom-4 flex flex-col items-center group cursor-pointer">
-                                        <div className="p-2.5 border border-border bg-emerald-950/10 rounded-[14px] flex items-center justify-center transition-transform group-hover:scale-105">
-                                            {tools[3].icon}
-                                        </div>
-                                        <span className="text-xs mt-1.5 font-medium text-foreground/80">{tools[3].name}</span>
-                                    </div>
-
-                                    <div className="relative perspective-1000 flex items-center justify-center bg-black/50 rounded-2xl h-19 w-19">
-                                        <div className="w-24 h-24 relative flex items-center justify-center">
-                                            <RotatingCube size={38} color="#0c1a15" />
-                                        </div>
-
-                                        <span className="absolute -bottom-6 text-xs text-primary" >workflow</span>
-                                    </div>
-                                </div>
-
-                                <div className="flex items-center justify-between pt-4 mt-auto border-t border-border/40">
-                                    <span className="text-xs text-foreground/65 tracking-wide">Connected services</span>
-                                    <span className="flex items-center gap-1.5 text-xs font-mono text-primary">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-                                        {tools.length} active
-                                    </span>
-                                </div>
-                            </div>
-                        </ >
-                    </div>
-                </div>
+                ))}
 
             </div>
         </div>
+    );
+}
+
+function TechStack() {
+    return (
+        <section id="techStack" className="mt-24 w-full">
+
+            <div className="mb-10">
+
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 ">
+                        <div className="flex items-center gap-3">
+                            <p className="text-xl font-bold tracking-widest">TECH STACK</p>
+                            <span className="w-7 h-0.5 rounded-2xl bg-primary inline-block"></span>
+                        </div>
+                        <p className="text-foreground/65 text-sm tracking-wide"></p>
+                    </div>
+
+                    <p className="max-w-sm text-sm leading-6 text-muted-foreground/70">
+                        A focused set of technologies I use to build and ship
+                        web applications.
+                    </p>
+                </div>
+            </div>
+
+
+            <div className="space-y-9">
+                <StackGroup
+                    title="Frontend"
+                    items={STACK.Frontend}
+                    startIndex={0}
+                />
+
+                <StackGroup
+                    title="Backend"
+                    items={STACK.Backend}
+                    startIndex={4}
+                />
+
+                <StackGroup
+                    title="Workflow & Infrastructure"
+                    items={STACK["Workflow & Infrastructure"]}
+                    startIndex={8}
+                />
+            </div>
+
+
+            <div className="mt-8 flex items-center justify-between border-t border-border pt-4">
+                <div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.18em] text-muted-foreground/40">
+                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
+                    stack.active
+                </div>
+
+                <span className="font-mono text-[9px] text-muted-foreground/30">
+                    12 technologies
+                </span>
+            </div>
+
+            <style jsx>{`
+                .tech-item {
+                    opacity: 0;
+                    transform: translateY(8px);
+                    animation: revealTech 600ms
+                        cubic-bezier(0.22, 1, 0.36, 1) forwards;
+                }
+
+                .tech-indicator {
+                    position: absolute;
+                    left: -8px;
+                    top: 50%;
+                    width: 3px;
+                    height: 3px;
+                    border-radius: 9999px;
+                    background: var(--primary);
+                    opacity: 0.35;
+                    transform: translateY(-50%);
+                    transition:
+                        height 300ms ease,
+                        opacity 300ms ease;
+                }
+
+                .tech-item:hover .tech-indicator {
+                    height: 18px;
+                    opacity: 1;
+                    
+                }
+
+                @keyframes revealTech {
+                    from {
+                        opacity: 0;
+                        transform: translateY(8px);
+                    }
+
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+
+                @media (prefers-reduced-motion: reduce) {
+                    .tech-item {
+                        opacity: 1;
+                        transform: none;
+                        animation: none;
+                    }
+
+                    .tech-indicator {
+                        transition: none;
+                    }
+                }
+            `}</style>
+        </section>
     );
 }
 

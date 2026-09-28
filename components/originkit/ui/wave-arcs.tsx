@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const map = (v: number, a: number, b: number, c: number, d: number) =>
     ((v - a) / (b - a)) * (d - c) + c;
@@ -186,8 +186,8 @@ interface InteractiveHeroCanvasProps {
 }
 
 export default function InteractiveHeroCanvas({
-    backgroundColor = "#030706",
-    lineColor = "#10b981",
+    backgroundColor,
+    lineColor,
     lineWidth = 1.5,
     lineCount = 76,
     speed = 6,
@@ -196,6 +196,29 @@ export default function InteractiveHeroCanvas({
     style,
 }: InteractiveHeroCanvasProps) {
     const mouseRef = useRef({ y: 0, targetY: 0 });
+    const [themeColors, setThemeColors] = useState({ background: "", primary: "" });
+
+    useEffect(() => {
+        const updateThemeColors = () => {
+            const styles = getComputedStyle(document.documentElement);
+            setThemeColors({
+                background: styles.getPropertyValue("--background").trim(),
+                primary: styles.getPropertyValue("--primary").trim(),
+            });
+        };
+
+        updateThemeColors();
+        const observer = new MutationObserver(updateThemeColors);
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ["class"],
+        });
+
+        return () => observer.disconnect();
+    }, []);
+
+    const canvasBackground = backgroundColor ?? themeColors.background;
+    const canvasLineColor = lineColor ?? themeColors.primary;
 
     const { containerRef, canvasRef, stateRef } = useCanvasAnimation({
         deferStart: true,
@@ -211,12 +234,16 @@ export default function InteractiveHeroCanvas({
 
             mouse.y = mouse.y + (mouse.targetY - mouse.y) * 0.1;
 
-            e.fillStyle = backgroundColor;
-            e.fillRect(0, 0, r, i);
+            if (canvasBackground) {
+                e.fillStyle = canvasBackground;
+                e.fillRect(0, 0, r, i);
+            } else {
+                e.clearRect(0, 0, r, i);
+            }
 
             const isMobile = r < 768;
             const u = 55000 / glow;
-            const { r: cr, g: cg, b: cb } = parseRGB(lineColor);
+            const { r: cr, g: cg, b: cb } = parseRGB(canvasLineColor);
 
             e.save();
             e.lineWidth = lineWidth;
@@ -310,6 +337,7 @@ export default function InteractiveHeroCanvas({
         <div
             ref={containerRef}
             aria-hidden="true"
+            className="bg-background"
             style={{
                 ...style,
                 position: "relative",

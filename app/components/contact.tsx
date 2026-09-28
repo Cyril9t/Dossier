@@ -63,36 +63,39 @@ export interface ToastNotification {
 }
 
 const PROJECT_TYPES: string[] = [
-    "Full-Stack Web Application",
     "Modern Front-end Development",
+    "Back-end development",
+    "Full-Stack Web Application",
     "Collaboration",
-    "System Architecture & Scaling",
-    "Engineering Leadership & Advisory",
 ];
 
 const INQUIRY_OPTIONS: InquiryOption[] = [
     {
-        id: "fullstack",
-        title: "Full-Stack Web Application",
-        description: "Open to select client projects, engineering leadership, or high-impact full-stack contracts. Have an idea, a codebase that needs scaling, or want to discuss modern systems architecture? Reach out.",
-        category: "Core Service",
+        id: "web-development",
+        title: "Web Development",
+        description:
+            "Have a website or web application in mind? I can help turn your idea into a functional, responsive, and user-friendly product.",
+        category: "Development",
         iconName: "code"
     },
     {
-        id: "architecture",
-        title: "System Architecture & Scaling",
-        description: "Open to select client projects, engineering leadership, or high-impact full-stack contracts. Have an idea, a codebase that needs scaling, or want to discuss modern systems architecture? Reach out.",
-        category: "Infrastructure",
+        id: "project",
+        title: "Project Collaboration",
+        description:
+            "Working on a project and need another developer? I'm open to collaborating, contributing to existing codebases, and helping bring ideas to life.",
+        category: "Collaboration",
         iconName: "cpu"
     },
     {
-        id: "leadership",
-        title: "Engineering Leadership & Advisory",
-        description: "Open to select client projects, engineering leadership, or high-impact full-stack contracts. Have an idea, a codebase that needs scaling, or want to discuss modern systems architecture? Reach out.",
-        category: "Advisory",
+        id: "opportunity",
+        title: "Job Opportunity",
+        description:
+            "Looking for a software developer to join your team? I'm open to full-time roles, internships, and opportunities where I can learn, contribute, and grow.",
+        category: "Career",
         iconName: "layers"
     }
 ];
+
 
 const SOCIAL_LINKS: SocialLink[] = [
     { name: "GitHub", handle: "cyril@-cyril9-dev", url: "https://github.com", icon: "github" },
@@ -116,34 +119,15 @@ const CustomStyles: FC = () => (
       width: 5px;
       height: 5px;
     }
-    .custom-scrollbar::-webkit-scrollbar-track {
-      background: #080d11;
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-      background: #1a2630;
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: var(--muted);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: var(--border);
       border-radius: 4px;
     }
     .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-      background: #00ff88;
-    }
-
-    .scanline-grid {
-      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      background-size: 24px 24px;
-    }
-
-    .neon-glow-soft {
-      box-shadow: 0 0 15px rgba(0, 255, 136, 0.12);
-    }
-    .neon-glow-strong {
-      box-shadow: 0 0 30px rgba(0, 255, 136, 0.25);
-    }
-    .white-btn-glow {
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
-    }
-    .white-btn-glow:hover {
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.5), 0 0 15px rgba(0, 255, 136, 0.3);
+            background: var(--primary);
     }
 
     @keyframes cursorBlink {
@@ -287,8 +271,8 @@ export default function ContactMe() {
                         className={`tracking-widest text-xs px-4 py-3 rounded-lg shadow-2xl flex items-center gap-2.5 border transition-all animate-bounce ${t.type === 'success'
                             ? 'bg-background border-border text-primary'
                             : t.type === 'warning'
-                                ? 'bg-background border-destructive text-amber-400'
-                                : 'bg-background border-chart-4 '
+                                ? 'bg-background border-destructive text-destructive'
+                                : 'bg-background border-border text-muted-foreground'
                             }`}
                     >
                         <Terminal size={14} className="shrink-0 animate-pulse" />
@@ -312,6 +296,10 @@ export default function ContactMe() {
                         <p className="text-foreground/65 text-sm tracking-wide">Available for freelance & full-time roles</p>
                     </div>
 
+
+
+
+
                     <div className="space-y-1">
                         <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-wide">
                             Let's build something
@@ -322,7 +310,15 @@ export default function ContactMe() {
                     </div>
 
                     <p className="text-foreground/65 text-sm sm:text-base tracking-wide">
-                        Open to select client projects, engineering leadership, or high-impact full-stack contracts. Have an idea, a codebase that needs scaling, or want to discuss modern systems architecture? Reach out.
+                        I'm open to software development opportunities, freelance web projects, and collaborations. Whether you have a new idea or need help improving an existing web application, I'd love to hear about it.
+                        What I can help with
+
+                        Frontend web development
+                        Backend API development
+                        Web Application
+
+                        Have a project in mind? Let's talk.
+
                     </p>
 
 
@@ -330,9 +326,9 @@ export default function ContactMe() {
 
                         <div className="relative flex h-2.5 w-2.5">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
-                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-chart-4" />
+                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary" />
                         </div>
-                        <div className="font-mono text-[10px] sm:text-xs font-bold tracking-wider text-primary">
+                        <div className="font-mono text-[10px] sm:text-xs  tracking-wider text-primary">
                             STATUS: ACCEPTING NEW PROJECTS
                         </div>
 
@@ -347,19 +343,19 @@ export default function ContactMe() {
                                     key={card.id}
                                     onClick={() => handleScopeSelect(card)}
                                     className={`group relative p-4 sm:p-5 rounded-xl border-2 transition-all duration-300 cursor-pointer ${isSelected
-                                        ? 'border-border '
-                                        : ' border-border hover:border-border hover:bg-secondary'
+                                        ? 'border-primary bg-secondary'
+                                        : 'border-border hover:bg-secondary'
                                         }`}
                                 >
 
                                     <div
-                                        className={`absolute left-0 top-1/2 -translate-y-1/2 w-1 h-10 rounded-r-full transition-all duration-300 ${isSelected ? 'bg-primary ' : 'bg-transparent group-hover:bg-slate-700'
+                                        className={`absolute left-0 top-1/2 -translate-y-1/2 w-1 h-10 rounded-r-full transition-all duration-300 ${isSelected ? 'bg-primary ' : 'bg-transparent group-hover:bg-accent'
                                             }`}
                                     />
 
                                     <div className="flex items-start gap-3.5 pl-2">
 
-                                        <div className={`p-2 rounded-lg mt-0.5 transition-colors ${isSelected ? 'bg-[#00ff88]/15 text-primary' : 'bg-muted text-foreground/65 group-hover:text-slate-300'
+                                        <div className={`p-2 rounded-lg mt-0.5 transition-colors ${isSelected ? 'bg-accent text-accent-foreground' : 'bg-muted text-muted-foreground group-hover:text-foreground'
                                             }`}>
                                             {card.iconName === 'code' && <Code2 size={18} />}
                                             {card.iconName === 'cpu' && <Cpu size={18} />}
@@ -368,16 +364,16 @@ export default function ContactMe() {
 
                                         <div className="space-y-1.5 flex-1">
                                             <div className="flex items-center justify-between gap-2">
-                                                <h3 className={`text-xs sm:text-sm font-semibold transition-colors font-mono ${isSelected ? 'text-primary' : 'text-slate-200 group-hover:text-white'
+                                                <h3 className={`text-xs sm:text-sm font-semibold transition-colors font-mono ${isSelected ? 'text-primary' : 'text-foreground'
                                                     }`}>
                                                     {card.title}
                                                 </h3>
-                                                <Button variant={"outline"} className="text-[11px] font-mono text-sidebar-accent-foreground">
+                                                <Button variant={"outline"} className="text-[11px] font-mono text-secondary-foreground">
                                                     {card.category}
                                                 </Button>
                                             </div>
 
-                                            <p className="text-xs text-slate-400 leading-relaxed font-mono line-clamp-3 sm:line-clamp-none">
+                                            <p className="text-xs text-muted-foreground leading-relaxed font-mono line-clamp-3 sm:line-clamp-none">
                                                 {card.description}
                                             </p>
                                         </div>
@@ -415,14 +411,14 @@ export default function ContactMe() {
 
 
                 <div className="lg:col-span-6 w-full">
-                    <div className="relative rounded-2xl  border border-border shadow-2xl overflow-hidden transition-all duration-300 hover:border-chart-5">
+                    <div className="relative rounded-2xl border border-border bg-card shadow-md overflow-hidden transition-all duration-300 hover:border-primary">
 
 
                         <div className="flex items-center justify-between px-4 py-3  border-b border-border">
 
                             <div className="flex items-center gap-1 md:gap-2">
-                                <div className="w-3 h-3 rounded-full bg-rose-500/80 border border-rose-600/30 hover:opacity-80 cursor-pointer" />
-                                <div className="w-3 h-3 rounded-full bg-amber-500/80 border border-amber-600/30 hover:opacity-80 cursor-pointer" />
+                                <div className="w-3 h-3 rounded-full bg-destructive border border-border hover:opacity-80 cursor-pointer" />
+                                <div className="w-3 h-3 rounded-full bg-secondary-foreground border border-border hover:opacity-80 cursor-pointer" />
                                 <div className="w-3 h-3 rounded-full bg-primary border border-border hover:opacity-80 cursor-pointer" />
                             </div>
 
@@ -455,14 +451,14 @@ export default function ContactMe() {
 
                             {(transmissionStage === 'encrypting' || transmissionStage === 'transmitting') && (
                                 <div className="absolute inset-0 z-30  backdrop-blur-sm p-6 flex flex-col items-center justify-center space-y-4 font-mono text-xs">
-                                    <div className="p-3.5 rounded-full  text-primary neon-glow-strong animate-pulse">
+                                    <div className="p-3.5 rounded-full text-primary animate-pulse">
                                         <Radio size={30} className="animate-spin" />
                                     </div>
                                     <div className="text-primary font-bold text-sm tracking-wider">
                                         {transmissionStage === 'encrypting' ? 'ENCRYPTING PAYLOAD BUFFER' : 'DISPATCHING TLS PACKETS'}
                                     </div>
 
-                                    <div className="w-full max-w-sm bg-background border border-border rounded-lg p-3.5 space-y-2 text-left text-slate-400 text-[11px] font-mono">
+                                    <div className="w-full max-w-sm bg-card border border-border rounded-lg p-3.5 space-y-2 text-left text-muted-foreground text-[11px] font-mono">
                                         {transmissionLog.map((log, idx) => (
                                             <div key={idx} className="flex items-center gap-2">
                                                 <span className="text-primary">{log}</span>
@@ -475,7 +471,7 @@ export default function ContactMe() {
                             { }
                             {transmissionStage === 'success' ? (
                                 <div className="flex-1 flex flex-col items-center justify-center text-center space-y-5 py-8 font-mono">
-                                    <div className="w-16 h-16 rounded-2xl bg-background border border-[#00ff88]/40 flex items-center justify-center text-primary neon-glow-soft">
+                                    <div className="w-16 h-16 rounded-2xl bg-secondary border border-border flex items-center justify-center text-primary">
                                         <CheckCircle2 size={36} />
                                     </div>
                                     <div className="space-y-1">
@@ -540,9 +536,9 @@ export default function ContactMe() {
                                                 value={formState.name}
                                                 onChange={handleInputChange}
                                                 placeholder="Alex Chen"
-                                                className={`w-full border rounded-lg px-3.5 py-2.5 text-xs placeholder-slate-600 focus:outline-none transition-all ${formErrors.name
-                                                    ? 'border-destructive focus:border-destructive'
-                                                    : 'border-border focus:border-primary '
+                                                className={`w-full bg-background text-foreground border rounded-lg px-3.5 py-2.5 text-xs placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50 transition-all ${formErrors.name
+                                                    ? 'border-destructive focus:border-destructive focus-visible:ring-destructive/30'
+                                                    : 'border-input focus:border-ring '
                                                     }`}
                                             />
                                             {formErrors.name && (
@@ -567,9 +563,9 @@ export default function ContactMe() {
                                                 value={formState.email}
                                                 onChange={handleInputChange}
                                                 placeholder="alex@company.com"
-                                                className={`w-full  border rounded-lg px-3.5 py-2.5 text-xs  placeholder-slate-600 focus:outline-none transition-all ${formErrors.email
-                                                    ? 'border-destructive focus:border-destructive'
-                                                    : 'border-border focus:border-primary'
+                                                className={`w-full bg-background text-foreground border rounded-lg px-3.5 py-2.5 text-xs placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50 transition-all ${formErrors.email
+                                                    ? 'border-destructive focus:border-destructive focus-visible:ring-destructive/30'
+                                                    : 'border-input focus:border-ring'
                                                     }`}
                                             />
 
@@ -594,15 +590,15 @@ export default function ContactMe() {
                                                 name="projectType"
                                                 value={formState.projectType}
                                                 onChange={handleInputChange}
-                                                className="w-full border border-border rounded-lg px-3.5 py-2.5 text-xs focus:outline-none focus:border-primary transition-all appearance-none cursor-pointer pr-10"
+                                                className="w-full bg-background text-foreground border border-input rounded-lg px-3.5 py-2.5 text-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50 transition-all appearance-none cursor-pointer pr-10"
                                             >
                                                 {PROJECT_TYPES.map((type) => (
-                                                    <option key={type} value={type} className="bg-secondary text-primary py-1">
+                                                    <option key={type} value={type} className="bg-secondary text-secondary-foreground py-1">
                                                         {type}
                                                     </option>
                                                 ))}
                                             </select>
-                                            <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500">
+                                            <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-muted-foreground">
                                                 <ChevronDown size={14} />
                                             </div>
                                         </div>
@@ -625,9 +621,9 @@ export default function ContactMe() {
                                             value={formState.message}
                                             onChange={handleInputChange}
                                             placeholder="Brief summary of your product goals, scope, and timeline....."
-                                            className={`w-full bg-background border rounded-lg p-3.5 text-sm text-text placeholder-slate-600 focus:outline-none transition-all resize-none custom-scrollbar leading-relaxed ${formErrors.message
-                                                ? 'border-destructive focus:border-destructive'
-                                                : 'border-border focus:border-border '
+                                            className={`w-full bg-background text-foreground border rounded-lg p-3.5 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50 transition-all resize-none custom-scrollbar leading-relaxed ${formErrors.message
+                                                ? 'border-destructive focus:border-destructive focus-visible:ring-destructive/30'
+                                                : 'border-input focus:border-ring '
                                                 }`}
                                         />
                                         {formErrors.message && (
@@ -651,7 +647,7 @@ export default function ContactMe() {
 
                                             <span>Transmit Message</span>
 
-                                            <Zap size={14} className="fill-black group-hover:scale-110 transition-transform text-black" />
+                                            <Zap size={14} className="fill-current group-hover:scale-110 transition-transform text-primary-foreground" />
                                         </Button>
 
                                     </div>
@@ -662,7 +658,7 @@ export default function ContactMe() {
                         </div>
 
 
-                        <div className="px-4 py-2 bg-background border-t flex items-center justify-between text-[10px] md:text-[13px] font-mono text-text">
+                        <div className="px-4 py-2 bg-background border-t border-border flex items-center justify-between text-[10px] md:text-[13px] font-mono text-foreground">
 
                             <div className="flex items-center gap-3">
                                 <span className="flex items-center gap-1">

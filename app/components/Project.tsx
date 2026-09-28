@@ -10,16 +10,16 @@ export default function FeaturedProjects() {
     const projects = [
         {
             title: "Zyloo E-commerce",
-            category: "Full Stack",
-            description: "A modern e-commerce platform with secure payments, user accounts, and real-time order tracking.",
+            category: "Full-Stack",
+            description: "Zyloo is an e-commerce platform where users can browse products, manage their carts, securely complete payments, and track their orders. I built the application to bring the shopping experience and order workflow together in one platform.",
             tags: ["Next.js", "Tailwind", "Prisma", "PostgreSQL"],
             previewType: "zyloo",
             link: "https://zyloo-five.vercel.app/"
         },
         {
             title: "AttendX",
-            category: "Full Stack",
-            description: "A fullstack QR-based attendance management system built with modern UI component for students, tutors, and administrators.",
+            category: "Full-Stack",
+            description: "AttendX is a QR-based attendance management system designed for students, tutors, and administrators. It helps simplify attendance recording and management through a web-based workflow.",
             tags: ["Next.js", "TailwindCss", "Prisma", "PostgreSQl"],
             previewType: "AttendX",
             link: "https://attendx-flame.vercel.app/"
@@ -27,7 +27,7 @@ export default function FeaturedProjects() {
         {
             title: "MovieFlex",
             category: "Front-end",
-            description: "A modern movie discovery platform that lets users explore movies, view detailed information, search for films, and save their favorite titles for later",
+            description: "MovieFlex is a movie discovery web application that allows users to browse and search for movies, explore detailed movie information, and save their favorite films to a personal watchlist. Users can also watch behind-the-scenes content, view movie budgets and other production details, and explore detailed information about the cast and crew.",
             tags: ["React", "javaScript", "CSS"],
             previewType: "MovieFlex",
             link: "https://moviefle-x-yt8f.vercel.app/"
@@ -35,7 +35,7 @@ export default function FeaturedProjects() {
         {
             title: "Vibe Stream",
             category: "Front-end",
-            description: "A modern music streaming web app that lets users discover, record, & download songs, while exploring artists through a clean & responsive interface.",
+            description: "Vibe Stream is a music web application where users can discover songs, explore artists, user can record their sound audio, and download music and their recordings. It combines music discovery with additional audio features in a responsive interface.",
             tags: ["React", "Node.js", "PostgreSQL", "Chart.js"],
             previewType: "finance",
             link: "https://cyril9t.github.io/Music-app"
@@ -59,13 +59,13 @@ export default function FeaturedProjects() {
                     {projects.map((project, index) => (
                         <div
                             key={index}
-                            className=" border border-border rounded-xl p-5 flex flex-col justify-between hover:border-chart-1 transition-all duration-300 group"
+                            className="border border-border bg-card rounded-xl p-2 flex flex-col justify-between hover:border-primary transition-all duration-300 group"
                         >
                             <div>
-                                <div className="flex flex-col sm:flex-row gap-4 mb-1">
+                                <div className="flex flex-col gap-4 mb-1 w-full">
 
 
-                                    <div className=" border border-border p-1 rounded-sm w-full sm:w-1/2 flex flex-col justify-between h-42 relative overflow-hidden">
+                                    <div className=" border border-border p-1 rounded-sm w-full flex flex-col justify-between h-50 relative overflow-hidden">
                                         {project.previewType === 'zyloo' && (
                                             <>
                                                 <Image src={zyloo} alt="" className="w-full object-cover h-full rounded-[5px]" />
@@ -91,17 +91,23 @@ export default function FeaturedProjects() {
                                         )}
                                     </div>
 
-                                    {/* Project Details */}
-                                    <div className="w-full sm:w-1/2 flex flex-col justify-start gap-1">
-                                        <Badge variant={"outline"} className="p-3 rounded-full font-medium text-primary">
-                                            {project.category}
-                                        </Badge>
-                                        <h3 className="font-semibold text-lg mb-1">{project.title}</h3>
-                                        <p className="text-sm text-foreground/65 leading-relaxed">{project.description}</p>
+
+                                    <div className="w-full  flex flex-col justify-start gap-1">
+                                        <div className="flex gap-2 ">
+
+                                            <h3 className="font-semibold text-lg ">{project.title}</h3>
+
+                                            <Badge variant={"outline"} className="p-2 rounded-full font-medium text-primary mt-auto mb-auto tracking-wide">
+                                                {project.category}
+                                            </Badge>
+
+
+                                        </div>
+                                        <p className="text-sm text-foreground/65 leading-relaxed tracking-wider">{project.description}</p>
 
                                         <div className="flex flex-wrap gap-1.5 mb-6">
                                             {project.tags.map((tag, tagIdx) => (
-                                                <span key={tagIdx} className="bg-[#182622] text-[11px] px-2.5 py-1 rounded border border-[#233832]">
+                                                <span key={tagIdx} className="bg-secondary text-secondary-foreground text-[11px] px-2.5 py-1 rounded border border-border">
                                                     {tag}
                                                 </span>
                                             ))}

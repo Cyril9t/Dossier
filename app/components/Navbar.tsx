@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import FlipCube from "@/components/originkit/ui/flip-cube";
+import ThemeToggle from "./Toggle";
 
 function Navbar() {
     return (
@@ -10,10 +11,10 @@ function Navbar() {
                     <span className="rounded-full h-2 w-2 bg-primary animate-pulse inline-block"></span>
                     <span className="font-mono text-xs">v2.4.0</span>
                     <span className="text-foreground/40">//</span>
-                    <span className="text-chart-2 font-semibold tracking-wide text-xs">CONNECTED</span>
+                    <span className="text-primary font-semibold tracking-wide text-xs">CONNECTED</span>
                 </Badge>
             </div>
-
+            <ThemeToggle />
 
             <div className="flex items-center gap-3 tracking-tight md:tracking-widest text-xs sm:text-sm">
                 <div className="flex items-center gap-0 md:gap-2">

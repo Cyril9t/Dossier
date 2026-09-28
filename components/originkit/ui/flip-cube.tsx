@@ -357,8 +357,8 @@ interface Props {
 export default function FlipCube(props: Props) {
     const {
         background = "",
-        baseColor = "#10b981",
-        accentColor = "#FFFFFF",
+        baseColor = "",
+        accentColor = "",
         speed = 34,
         distance = 5,
         cube,
@@ -371,19 +371,29 @@ export default function FlipCube(props: Props) {
     const live = useRef({
         base: [0, 0, 0] as RGB,
         acc: [0, 0, 0] as RGB,
-        speed: 50,
-        distance: 6,
-        cube: CUBE_DEFAULTS,
-    })
-    live.current = {
-        base: parseColor(baseColor, [0.56, 0.6, 0.65]),
-        acc: parseColor(accentColor, [1, 1, 1]),
         speed,
         distance,
         cube: { ...CUBE_DEFAULTS, ...cube },
-    }
+    })
 
     useEffect(() => {
+        const updateThemeColors = () => {
+            const styles = getComputedStyle(document.documentElement);
+            live.current = {
+                base: parseColor(
+                    baseColor || styles.getPropertyValue("--primary"),
+                    [0, 0, 0]
+                ),
+                acc: parseColor(
+                    accentColor || styles.getPropertyValue("--foreground"),
+                    [0, 0, 0]
+                ),
+                speed,
+                distance,
+                cube: { ...CUBE_DEFAULTS, ...cube },
+            };
+        };
+
         const canvas = canvasRef.current
         const host = hostRef.current
         if (!canvas || !host) return
@@ -421,6 +431,13 @@ export default function FlipCube(props: Props) {
 
         const block = upload(gl, boxGeo(BLOCK, BLOCK, BLOCK))
         if (!block) return
+
+        updateThemeColors();
+        const themeObserver = new MutationObserver(updateThemeColors);
+        themeObserver.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ["class"],
+        });
 
         let cssW = 0, cssH = 0, dpr = 1
         const resize = () => {
@@ -503,11 +520,12 @@ export default function FlipCube(props: Props) {
         return () => {
             cancelAnimationFrame(raf)
             ro.disconnect()
+            themeObserver.disconnect()
             freeMesh(gl, block)
             gl.deleteProgram(prog)
 
         }
-    }, [])
+    }, [baseColor, accentColor, speed, distance, cube])
 
     return (
         <div

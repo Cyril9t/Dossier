@@ -19,7 +19,7 @@ type Props = {
 };
 
 const DEFAULTS = {
-    color: "rgba(16, 185, 129, 0.15)",
+    color: "var(--primary)",
     rounded: 12,
     thickness: 1,
     borderSize: 30,
@@ -40,8 +40,11 @@ const MAX_GLOW_REACH = 36;
 
 function withAlpha(input: string, alpha: number) {
     const a = Math.max(0, Math.min(1, alpha));
-    if (typeof input !== "string") return `rgba(0,0,0,${a})`;
+    if (typeof input !== "string") return "transparent";
     const s = input.trim();
+    if (/^var\(\s*--[\w-]+\s*\)$/.test(s)) {
+        return `color-mix(in srgb, ${s} ${a * 100}%, transparent)`;
+    }
 
     const hex = s.match(/^#([0-9a-f]{3,8})$/i);
     if (hex) {
@@ -53,7 +56,7 @@ function withAlpha(input: string, alpha: number) {
                 .join("");
         }
         const n = parseInt(h.slice(0, 6), 16);
-        if (!Number.isFinite(n)) return `rgba(0,0,0,${a})`;
+        if (!Number.isFinite(n)) return "transparent";
         return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${a})`;
     }
 
@@ -64,7 +67,7 @@ function withAlpha(input: string, alpha: number) {
             return `rgba(${parts[0]},${parts[1]},${parts[2]},${a})`;
         }
     }
-    return `rgba(0,0,0,${a})`;
+    return "transparent";
 }
 
 function perimeterPoint(u: number, w: number, h: number): [number, number] {

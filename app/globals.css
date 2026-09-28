@@ -1,12 +1,15 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "@fontsource-variable/inter";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --font-heading: var(--font-sans);
   --font-sans: var(--font-sans);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -15,29 +18,39 @@
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar: var(--sidebar);
+
   --color-chart-5: var(--chart-5);
   --color-chart-4: var(--chart-4);
   --color-chart-3: var(--chart-3);
   --color-chart-2: var(--chart-2);
   --color-chart-1: var(--chart-1);
+
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
+
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
+
   --color-muted-foreground: var(--muted-foreground);
   --color-muted: var(--muted);
+
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary: var(--secondary);
+
   --color-primary-foreground: var(--primary-foreground);
   --color-primary: var(--primary);
+
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
+
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+
   --color-foreground: var(--foreground);
   --color-background: var(--background);
+
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -47,47 +60,118 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-:root,
-.dark {
-  --background: #030706;
-  /* Deep immersive dark terminal slate */
-  --foreground: #ecfdf5;
-  /* Crisp mint-white text */
-  --card: #060e0b;
-  /* Slightly raised dark container surface */
-  --card-foreground: #ecfdf5;
-  --popover: #060e0b;
-  --popover-foreground: #ecfdf5;
-  --primary: #10b981;
-  /* Precise vibrant terminal emerald */
-  --primary-foreground: #030706;
-  --secondary: #0c1a15;
-  --secondary-foreground: #ecfdf5;
-  --muted: #0c1a15;
-  --muted-foreground: #6ee7b7;
-  /* Muted emerald glow */
-  --accent: #0c1a15;
-  --accent-foreground: #10b981;
-  --destructive: #f43f5e;
-  --border: rgba(16, 185, 129, 0.15);
-  /* Subtle emerald-tinted borders */
-  --input: rgba(16, 185, 129, 0.2);
-  --ring: #10b981;
-  --chart-1: #10b981;
-  --chart-2: #34d399;
-  --chart-3: #6ee7b7;
-  --chart-4: #059669;
-  --chart-5: #047857;
-  --radius: 0.75rem;
-  --sidebar: #040907;
-  --sidebar-foreground: #ecfdf5;
-  --sidebar-primary: #10b981;
-  --sidebar-primary-foreground: #030706;
-  --sidebar-accent: #0c1a15;
-  --sidebar-accent-foreground: #10b981;
-  --sidebar-border: rgba(16, 185, 129, 0.15);
-  --sidebar-ring: #10b981;
+/* =========================================================
+   LIGHT MODE (Ivory & Sage Green Harmony)
+   ========================================================= */
+:root {
+  /* Base */
+  --background: #f5f4ec;
+  --foreground: #283229;
+
+  /* Surfaces */
+  --card: #fbfaf4;
+  --card-foreground: #283229;
+  --popover: #fbfaf4;
+  --popover-foreground: #283229;
+
+  /* Brand */
+  --primary: #71856b;
+  --primary-foreground: #ffffff;
+
+  /* Soft sage surfaces */
+  --secondary: #e7ece2;
+  --secondary-foreground: #4f604b;
+
+  --muted: #ecefe8;
+  --muted-foreground: #687267;
+
+  /* Accent */
+  --accent: #dce6d7;
+  --accent-foreground: #4f604b;
+
+  /* States */
+  --destructive: #c85a52;
+
+  /* Borders & inputs */
+  --border: #d5ddd0;
+  --input: #cbd5c5;
+  --ring: #71856b;
+
+  /* Charts */
+  --chart-1: #71856b;
+  --chart-2: #879b80;
+  --chart-3: #a4b49d;
+  --chart-4: #596d54;
+  --chart-5: #40513d;
+
+  --radius: 0.5rem;
+
+  /* Sidebar */
+  --sidebar: #e9eee4;
+  --sidebar-foreground: #283229;
+  --sidebar-primary: #71856b;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #dce6d7;
+  --sidebar-accent-foreground: #4f604b;
+  --sidebar-border: #d2dbcd;
+  --sidebar-ring: #71856b;
 }
+
+.dark {
+  /* Base */
+  --background: #111612;
+  --foreground: #f1f0e7;
+
+  /* Surfaces */
+  --card: #182019;
+  --card-foreground: #f1f0e7;
+  --popover: #182019;
+  --popover-foreground: #f1f0e7;
+
+  /* Brand */
+  --primary: #9caf91;
+  --primary-foreground: #111612;
+
+  /* Soft sage surfaces */
+  --secondary: #202a21;
+  --secondary-foreground: #c5d1be;
+
+  --muted: #1b241c;
+  --muted-foreground: #a4ada1;
+
+  /* Accent */
+  --accent: #293529;
+  --accent-foreground: #b8c8ae;
+
+  /* States */
+  --destructive: #df716b;
+
+  /* Borders & inputs */
+  --border: rgba(156, 175, 145, 0.18);
+  --input: rgba(156, 175, 145, 0.25);
+  --ring: #9caf91;
+
+  /* Charts */
+  --chart-1: #9caf91;
+  --chart-2: #b8c8ae;
+  --chart-3: #82987a;
+  --chart-4: #62765c;
+  --chart-5: #485943;
+
+  /* Sidebar */
+  --sidebar: #0e130f;
+  --sidebar-foreground: #f1f0e7;
+  --sidebar-primary: #9caf91;
+  --sidebar-primary-foreground: #111612;
+  --sidebar-accent: #202a21;
+  --sidebar-accent-foreground: #b8c8ae;
+  --sidebar-border: rgba(156, 175, 145, 0.18);
+  --sidebar-ring: #9caf91;
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
 
 @layer base {
   * {
@@ -116,6 +200,10 @@
   }
 }
 
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -130,6 +218,10 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* =========================================================
+   3D / ANIMATION
+   ========================================================= */
 
 @keyframes spinSlow {
   from {

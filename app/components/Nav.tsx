@@ -39,8 +39,8 @@ export default function Nav({
 
     return (
         <div className="fixed bottom-3 left-1/2 z-50 w-[min(92vw,32rem)] -translate-x-1/2 sm:bottom-6">
-            <div className="rounded-full border border-border bg-background/70 p-1 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.25)]">
-                <nav className="flex items-center justify-between gap-1 rounded-full bg-background/20 px-1.5 py-2 sm:px-3">
+            <div className="rounded-full border border-border bg-card p-1">
+                <nav className="flex items-center justify-between gap-1 rounded-full bg-card px-1.5 py-2 sm:px-3">
                     {items.map(({ id, label, icon: Icon }) => {
                         const isActive = id === active;
                         return (
@@ -49,7 +49,7 @@ export default function Nav({
                                     type="button"
                                     aria-pressed={isActive}
                                     onClick={() => select(id)}
-                                    className="relative flex w-full min-w-[2.8rem] flex-col items-center justify-center rounded-full px-1.5 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:min-w-[3.5rem] sm:px-3"
+                                    className="relative flex w-full min-w-[2.8rem] flex-col items-center justify-center rounded-full px-1.5 py-1.5 transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:min-w-[3.5rem] sm:px-3"
                                 >
                                     <motion.div
                                         animate={{
@@ -71,7 +71,7 @@ export default function Nav({
                                         <motion.div
                                             layoutId="nav-active-dot"
                                             transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                                            className="absolute -bottom-1 h-1.5 w-1.5 rounded-full bg-primary shadow-[0_0_8px_var(--primary)]"
+                                            className="absolute -bottom-1 h-1.5 w-1.5 rounded-full bg-primary"
                                         />
                                     )}
                                 </button>
