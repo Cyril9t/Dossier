@@ -51,7 +51,7 @@ function HeroSection() {
                             Explore Work <ArrowRight className="h-4 w-4" />
                         </Button>
                         <Link href="https://github.com/Cyril9t">
-                            <Button variant="outline" className="flex items-center justify-center gap-2 rounded-full px-4 py-4 font-medium">
+                            <Button variant="outline" className="flex items-center justify-center gap-2 rounded-full px-4 py-4 font-medium w-full">
                                 View GitHub Profile
                                 <SiGithub className="h-4 w-4" />
                             </Button>
