@@ -47,11 +47,13 @@ function HeroSection() {
                     </div>
 
                     <div className="mt-6 flex w-full flex-col gap-4 pt-2 sm:flex-row">
-                        <Button className="flex items-center justify-center gap-2 rounded-full px-4 py-4 font-medium">
-                            Explore Work <ArrowRight className="h-4 w-4" />
-                        </Button>
+                        <Link href="#projects">
+                            <Button className="flex items-center h-10 justify-center gap-2 rounded-full  font-medium">
+                                Explore Work <ArrowRight className="h-4 w-4" />
+                            </Button>
+                        </Link>
                         <Link href="https://github.com/Cyril9t">
-                            <Button variant="outline" className="flex items-center justify-center gap-2 rounded-full px-4 py-4 font-medium w-full">
+                            <Button variant="outline" className="flex items-center h-10 justify-center gap-2 rounded-full font-medium w-full">
                                 View GitHub Profile
                                 <SiGithub className="h-4 w-4" />
                             </Button>
