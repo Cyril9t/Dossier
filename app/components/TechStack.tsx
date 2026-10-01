@@ -19,57 +19,57 @@ const STACK = {
     Frontend: [
         {
             name: "React",
-            icon: <SiReact />,
+            icon: <SiReact color="#61DAFB" className="animate-[spin_10s_linear_infinite]" size={35} />,
         },
         {
             name: "TypeScript",
-            icon: <SiTypescript />,
+            icon: <SiTypescript color="#3178C6" size={35} />,
         },
         {
             name: "Next.js",
-            icon: <SiNextdotjs />,
+            icon: <SiNextdotjs color="#000000" size={35} />,
         },
         {
             name: "JavaScript",
-            icon: <SiJavascript />,
+            icon: <SiJavascript color="#F7DF1E" size={35} />,
         },
     ],
 
     Backend: [
         {
             name: "Node.js",
-            icon: <SiNodedotjs />,
+            icon: <SiNodedotjs color="#339933" size={35} />,
         },
         {
             name: "Express",
-            icon: <SiExpress />,
+            icon: <SiExpress color="#000000" size={35} />,
         },
         {
             name: "PostgreSQL",
-            icon: <SiPostgresql />,
+            icon: <SiPostgresql color="#4169E1" size={35} />,
         },
         {
             name: "Prisma",
-            icon: <SiPrisma />,
+            icon: <SiPrisma color="#2D3748" size={35} />,
         },
     ],
 
     "Workflow & Infrastructure": [
         {
             name: "Git",
-            icon: <SiGit />,
+            icon: <SiGit color="#F05032" size={35} />,
         },
         {
             name: "Docker",
-            icon: <SiDocker />,
+            icon: <SiDocker color="#2496ED" size={35} />,
         },
         {
             name: "Vercel",
-            icon: <SiVercel />,
+            icon: <SiVercel color="#000000" size={35} />,
         },
         {
             name: "Cloudinary",
-            icon: <SiCloudinary />,
+            icon: <SiCloudinary color="#3448C5" size={35} />,
         },
     ],
 };
@@ -93,7 +93,7 @@ function TechItem({
             <div className="relative flex items-center gap-3">
                 <span className="tech-indicator" />
 
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center border rounded-[9px] border-border/60 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-primary/50">
+                <div className="flex h-fit w-fit p-1 shrink-0 items-center justify-center border rounded-[9px] border-border/60 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-primary/50">
                     <div className="text-primary transition-transform duration-300 group-hover:scale-110">
                         {icon}
                     </div>

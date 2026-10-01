@@ -35,12 +35,17 @@ export default function ThemeToggle() {
 
     return (
         <Button
-            variant={"outline"}
+            variant="outline"
             onClick={toggleTheme}
             aria-label="Toggle theme"
-
+            className="h-15 w-15 rounded-full"
+            size="icon"
         >
-            {dark ? <Sun /> : <Moon />}
+            {dark ? (
+                <Sun className="size-5" />
+            ) : (
+                <Moon className="size-5" />
+            )}
         </Button>
     );
 }
