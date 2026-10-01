@@ -30,7 +30,7 @@ function HeroSection() {
 
             <div className="flex flex-col items-start gap-8 md:flex-row md:gap-12 lg:gap-20">
                 <div className="w-full md:w-[55%]">
-                    <p className="text-4xl font-bold leading-tight text-primary sm:text-5xl md:text-6xl lg:text-6xl">
+                    <p className="text-3xl font-bold leading-tight text-primary md:text-6xl ">
                         <span className="text-foreground">Software Developer </span> building thoughtful web experiences.
                     </p>
 
@@ -48,7 +48,7 @@ function HeroSection() {
 
                     <div className="mt-6 flex w-full flex-col gap-4 pt-2 sm:flex-row">
                         <Link href="#projects">
-                            <Button className="flex items-center h-10 justify-center gap-2 rounded-full  font-medium">
+                            <Button className="flex items-center h-10 justify-center gap-2 rounded-full font-medium w-full">
                                 Explore Work <ArrowRight className="h-4 w-4" />
                             </Button>
                         </Link>
